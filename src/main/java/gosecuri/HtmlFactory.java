@@ -15,6 +15,7 @@ import org.apache.commons.io.FileUtils;
 
 import freemarker.template.Template;
 import freemarker.template.TemplateException;
+import utils.Utils;
 
 /**
  * Permet de construire du code html
@@ -22,6 +23,7 @@ import freemarker.template.TemplateException;
  */
 public class HtmlFactory
 {
+
 	/**
 	 * Constructeur
 	 */
@@ -72,7 +74,7 @@ public class HtmlFactory
 			input.put("staff", staff);
 
 			// enregistrement de la carte d'identité si elle n'est pas générique
-			if (!"default.png".equals(staff.getCarte().getName()))
+			if (!Utils.DEFAULT_AVATAR_NAME.equals(staff.getCarte().getName()))
 			{
 
 				File fileDest = new File("html/img/id/" + staff.getCarte().getName());
@@ -83,7 +85,7 @@ public class HtmlFactory
 			}
 
 			// écriture
-			String fileName = "html/staffs/" + staff.getId() + ".html";
+			String fileName = "html/staffs/" + staff.getId() + Utils.FORMAT_HTML;
 			write(template, input, fileName);
 		}
 
@@ -107,7 +109,7 @@ public class HtmlFactory
 		template.process(input, consoleWriter);
 
 		// For the sake of example, also write output into a file:
-		try (Writer fileWriter = new FileWriter(new File(fileName), Charset.forName("UTF-8")))
+		try (Writer fileWriter = new FileWriter(new File(fileName), Charset.forName(Utils.ENCODING)))
 		{
 			template.process(input, fileWriter);
 

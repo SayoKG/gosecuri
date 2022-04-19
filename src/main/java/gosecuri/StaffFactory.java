@@ -8,6 +8,8 @@ import java.util.List;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.FilenameUtils;
 
+import utils.Utils;
+
 /**
  * Staff factory
  *
@@ -33,7 +35,7 @@ public class StaffFactory
 		// Lecture du fichier
 		try
 		{
-			List<String> staffArgs = FileUtils.readLines(file, "UTF-8");
+			List<String> staffArgs = FileUtils.readLines(file, Utils.ENCODING);
 
 			// Information de base du staff
 			result.setFirstName(staffArgs.get(0));
@@ -51,10 +53,10 @@ public class StaffFactory
 			}
 		} catch (IOException e) // Le fichier n'existe pas, on crée un schéma par défaut
 		{
-			result.setFirstName("inconnu");
-			result.setName("inconnu");
-			result.setMission("inconnu");
-			result.setMdp("inconnu");
+			result.setFirstName(Utils.UNKNOWN);
+			result.setName(Utils.UNKNOWN);
+			result.setMission(Utils.UNKNOWN);
+			result.setMdp(Utils.UNKNOWN);
 			result.setMateriels(new ArrayList<Materiel>());
 		}
 
@@ -64,7 +66,7 @@ public class StaffFactory
 			result.setCarte(fileID);
 		} else // la carte n'existe pas, on en met une par défaut
 		{
-			result.setCarte(new File("img/id/default.png"));
+			result.setCarte(new File("img/id/" + Utils.DEFAULT_AVATAR_NAME));
 		}
 
 		return result;
@@ -88,8 +90,8 @@ public class StaffFactory
 		for (String line : lines)
 		{
 			// Récupération des fichiers permettant de construire le membre du staff
-			File file = new File(staffDirectory + line + ".txt");
-			File fileID = new File(cardDirectory + line + ".png");
+			File file = new File(staffDirectory + line + Utils.FORMAT_TXT);
+			File fileID = new File(cardDirectory + line + Utils.FORMAT_PNG);
 
 			results.add(build(file, fileID));
 		}

@@ -8,6 +8,7 @@ import java.util.List;
 import org.apache.commons.io.FileUtils;
 
 import freemarker.template.TemplateException;
+import utils.Utils;
 
 public class Main
 {
@@ -30,7 +31,7 @@ public class Main
 		StaffFactory.factory.buildsAll(new File(directory + "liste.txt"));
 
 		// On construit la liste des agents
-		List<String> lines = FileUtils.readLines(new File(directory + "staff.txt"), "UTF-8");
+		List<String> lines = FileUtils.readLines(new File(directory + "staff.txt"), Utils.ENCODING);
 		List<Staff> staffs = StaffFactory.builds(lines, directoryStaffs, directoryIdCards);
 
 		// On tri les agents par ordre alphabétique

@@ -17,14 +17,8 @@ public class Main
 			directoryStaffs = args[2];
 		}
 
-		try
-		{
-			GoSecuriRun goSecuri = new GoSecuriRun();
-			goSecuri.run(directory, directoryIdCards, directoryStaffs);
-		} catch (Exception e)
-		{
-			System.out.println("error : " + e);
-		}
+		GoSecuriRun goSecuri = new GoSecuriRun();
+		goSecuri.run(directory, directoryIdCards, directoryStaffs);
 
 	}
 

@@ -1,19 +1,17 @@
 package gosecuri;
 
 import java.io.File;
-import java.io.IOException;
 import java.util.Comparator;
 import java.util.List;
 
 import org.apache.commons.io.FileUtils;
 
-import freemarker.template.TemplateException;
 import utils.Utils;
 
 public class Main
 {
 
-	public static void main(String[] args) throws IOException, BadFileException, BadMaterialException, TemplateException
+	public static void main(String[] args) throws Exception
 	{
 		String directory = "src/main/resources/"; // args[0];
 		String directoryIdCards = "src/main/resources/idcards/"; // args[1];

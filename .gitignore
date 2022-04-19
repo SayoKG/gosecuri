@@ -2,7 +2,7 @@ target/
 
 html/index.html
 html/staffs
-html/id
-!html/id/default
+html/id/*
+!html/id/default.png
 
 .settings

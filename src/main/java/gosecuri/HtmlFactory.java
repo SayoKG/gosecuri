@@ -75,11 +75,11 @@ public class HtmlFactory
 			if (!"default.png".equals(staff.getCarte().getName()))
 			{
 
-				File fileDest = new File("img/id/" + staff.getCarte().getName());
+				File fileDest = new File("html/img/id/" + staff.getCarte().getName());
 
 				FileUtils.copyFile(staff.getCarte(), fileDest);
 
-				staff.setCarte(fileDest);
+				staff.setCarte(new File("img/id/" + staff.getCarte().getName()));
 			}
 
 			// écriture

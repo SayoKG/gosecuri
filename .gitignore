@@ -1,7 +1,7 @@
 target/
 
 html/index.html
-html/staffs
+html/staffs/
 html/img/id/
 !html/img/id/default.png
 

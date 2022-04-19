@@ -67,6 +67,9 @@ public class HtmlFactory
 		// Récupération du template
 		Template template = ViewTemplate.getTemplate().getPageTemplate();
 
+		// init du répertoire staff si inexistant
+		new File("html/staffs").mkdir();
+
 		// On crée une page pour chaque agent
 		for (Staff staff : staffs)
 		{

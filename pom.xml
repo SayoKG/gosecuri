@@ -21,7 +21,6 @@
         <archive>
           <manifest>
             <addClasspath>true</addClasspath>
-            <classpathPrefix>lib/</classpathPrefix>
             <mainClass>gosecuri.Main</mainClass>
           </manifest>
         </archive>

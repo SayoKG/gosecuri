@@ -34,9 +34,11 @@ public class HtmlFactoryTest
 		Utils.sortStaff(staffs);
 
 		// On génère les pages html
+		String directoryHtmlTest = "src/test/resources/fake/";
+		HtmlFactory.setDirectory(directoryHtmlTest);
 		HtmlFactory.buildIndex(staffs);
 
-		File result = new File("html/index.html");
+		File result = new File(directoryHtmlTest + "index.html");
 		List<String> resultLines = FileUtils.readLines(result, Utils.ENCODING);
 		File file = new File("src/test/resources/html/index.html");
 		List<String> fileLines = FileUtils.readLines(file, Utils.ENCODING);
@@ -71,9 +73,12 @@ public class HtmlFactoryTest
 		first.add(staffs.get(0));
 
 		// On construit la fiche de staff
+		String directoryHtmlTest = "src/test/resources/fake/";
+		HtmlFactory.setDirectory(directoryHtmlTest);
+
 		HtmlFactory.build(first);
 
-		File result = new File("html/staffs/cberthier.html");
+		File result = new File(directoryHtmlTest + "staffs/cberthier.html");
 		List<String> resultLines = FileUtils.readLines(result, Utils.ENCODING);
 		File file = new File("src/test/resources/html/staffs/cberthier.html");
 		List<String> fileLines = FileUtils.readLines(file, Utils.ENCODING);

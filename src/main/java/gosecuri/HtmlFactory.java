@@ -23,6 +23,8 @@ import utils.Utils;
  */
 public class HtmlFactory
 {
+	/** Répertoire d'impression des fichiers html */
+	private static String _directory = "html/";
 
 	/**
 	 * Constructeur
@@ -48,7 +50,7 @@ public class HtmlFactory
 		input.put("staffs", results);
 
 		// écriture
-		String fileName = "html/index.html";
+		String fileName = _directory + "index.html";
 		write(template, input, fileName);
 	}
 
@@ -66,7 +68,7 @@ public class HtmlFactory
 		Template template = ViewTemplate.getTemplate().getPageTemplate();
 
 		// init du répertoire staff si inexistant
-		new File("html/staffs").mkdir();
+		new File(_directory + "staffs").mkdir();
 
 		// On crée une page pour chaque agent
 		for (Staff staff : staffs)
@@ -86,7 +88,7 @@ public class HtmlFactory
 			}
 
 			// écriture
-			String fileName = "html/staffs/" + staff.getId() + Utils.FORMAT_HTML;
+			String fileName = _directory + "staffs/" + staff.getId() + Utils.FORMAT_HTML;
 			write(template, input, fileName);
 		}
 	}
@@ -113,6 +115,11 @@ public class HtmlFactory
 			template.process(input, fileWriter);
 
 		}
+	}
+
+	public static void setDirectory(String directory)
+	{
+		_directory = directory;
 	}
 
 }

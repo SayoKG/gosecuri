@@ -32,7 +32,7 @@ public class HtmlFactory
 		// rien
 	}
 
-	public static String buildIndex(List<Staff> staffs) throws TemplateException, IOException
+	public static void buildIndex(List<Staff> staffs) throws TemplateException, IOException
 	{
 		// Récupération du template
 		Template template = ViewTemplate.getTemplate().getIndexTemplate();
@@ -50,8 +50,6 @@ public class HtmlFactory
 		// écriture
 		String fileName = "html/index.html";
 		write(template, input, fileName);
-
-		return null;
 	}
 
 	/**
@@ -62,7 +60,7 @@ public class HtmlFactory
 	 * @throws IOException
 	 * @throws TemplateException
 	 */
-	public static String build(List<Staff> staffs) throws IOException, TemplateException
+	public static void build(List<Staff> staffs) throws IOException, TemplateException
 	{
 		// Récupération du template
 		Template template = ViewTemplate.getTemplate().getPageTemplate();
@@ -91,8 +89,6 @@ public class HtmlFactory
 			String fileName = "html/staffs/" + staff.getId() + Utils.FORMAT_HTML;
 			write(template, input, fileName);
 		}
-
-		return null;
 	}
 
 	/**

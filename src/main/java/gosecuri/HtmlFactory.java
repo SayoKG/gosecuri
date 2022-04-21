@@ -3,7 +3,6 @@ package gosecuri;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.io.OutputStreamWriter;
 import java.io.Writer;
 import java.nio.charset.Charset;
 import java.util.ArrayList;
@@ -106,8 +105,8 @@ public class HtmlFactory
 			throws TemplateException, IOException
 	{
 		// Write output to the console
-		Writer consoleWriter = new OutputStreamWriter(System.out);
-		template.process(input, consoleWriter);
+		// Writer consoleWriter = new OutputStreamWriter(System.out);
+		// template.process(input, consoleWriter);
 
 		// For the sake of example, also write output into a file:
 		try (Writer fileWriter = new FileWriter(new File(fileName), Charset.forName(Utils.ENCODING)))

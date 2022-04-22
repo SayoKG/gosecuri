@@ -24,6 +24,8 @@ public class HtmlFactory
 {
 	/** Répertoire d'impression des fichiers html */
 	private static String _directory = "html/";
+	/** indicateur si on utilise les threads ou non */
+	public static boolean thread = true;
 
 	/**
 	 * Constructeur
@@ -88,7 +90,18 @@ public class HtmlFactory
 
 			// écriture
 			String fileName = _directory + "staffs/" + staff.getId() + Utils.FORMAT_HTML;
-			write(template, input, fileName);
+
+			// L'écriture est réalisé dans un autre thread
+			if (thread)
+			{
+				ThreadGS th = new ThreadGS(template, input, fileName);
+				th.start();
+			} else
+			{
+				write(template, input, fileName);
+			}
+
+			// write(template, input, fileName);
 		}
 	}
 
@@ -98,10 +111,11 @@ public class HtmlFactory
 	 * @param template utilisé
 	 * @param input    utilisé
 	 * @param fileName nom du fichier
+	 * @return
 	 * @throws TemplateException
 	 * @throws IOException
 	 */
-	private static void write(Template template, Map<String, Object> input, String fileName)
+	public static synchronized void write(Template template, Map<String, Object> input, String fileName)
 			throws TemplateException, IOException
 	{
 		// Write output to the console

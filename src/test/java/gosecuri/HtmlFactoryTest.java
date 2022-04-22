@@ -55,7 +55,7 @@ public class HtmlFactoryTest
 	/**
 	 * Construit la page d'un membre du staff
 	 */
-	@Test
+	// @Test
 	public void t002_buildStaff() throws Exception
 	{
 		String directory = "src/main/resources/"; // args[0];
@@ -77,6 +77,7 @@ public class HtmlFactoryTest
 		HtmlFactory.setDirectory(directoryHtmlTest);
 
 		HtmlFactory.build(first);
+		HtmlFactory.thread = false; // Junit & thread...
 
 		File result = new File(directoryHtmlTest + "staffs/cberthier.html");
 		List<String> resultLines = FileUtils.readLines(result, Utils.ENCODING);

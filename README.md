@@ -1,9 +1,6 @@
 # MSPR_JAVA : GoSecuri
 
-Calvin Djafari 
 Kilian Georget 
-Ameyikpo Beni 
-Tamadji Emmanuela
 
 # Run 
 
